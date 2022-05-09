@@ -11,7 +11,12 @@ public class TrainControllerImpl implements TrainController {
 	private Timer timer = new Timer();
 
 	public TrainControllerImpl(){
-		timer.schedule(followSpeed(),1000);
+		TimerTask task = new TimerTask() {
+			 public void run() {
+            	followSpeed();
+        }
+    };
+		timer.schedule(task,1000);
 	}
 	
 	@Override
